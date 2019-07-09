@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Cena-JM/todo-list#readme",
   "devDependencies": {
     "css-loader": "^3.0.0",
+    "eslint": "^6.0.1",
     "file-loader": "^4.0.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.35.3",
