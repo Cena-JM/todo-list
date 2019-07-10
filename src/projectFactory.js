@@ -24,9 +24,14 @@ const getProject = (id) => {
   return { project }
 }
 
+const getProjects = () => {
+  let projects = getData();
+  return projects
+}
 
 export { 
   addProject,
   removeProject,
-  getProject
+  getProject,
+  getProjects
 }

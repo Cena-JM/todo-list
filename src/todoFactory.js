@@ -27,5 +27,11 @@ const removeTodo = (todoId, projectId) => {
   setData(projects);
 }
 
-export { todoFactory, addTodo, removeTodo }
+const getprojectTodos = (projectId) => {
+  const projects = getData();
+  let todos = projects[projectId].todos;
+  return todos;
+}
+
+export { todoFactory, addTodo, removeTodo, getprojectTodos }
 
