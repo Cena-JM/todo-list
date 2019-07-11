@@ -1,17 +1,18 @@
-import _ from "lodash";
+
 import "./styles/reset.css";
 import "./styles/style.css";
 import { renderProjects } from "./renderProjects";
-import { renderTodo } from "./renderTodos";
-
-const project = document.getElementsByClassName("project-item")
+import { projectForm } from "./projectForm";
+import { todoForm } from "./todoForm";
+import { renderTodos } from "./renderTodos";
+import { setDefaultProject } from "./projectFactory";
 
 const render = () => {
-    renderProjects()
-
-    project.addEventListener("click", () => {
-        renderTodo(projectId)
-    })
+    setDefaultProject();
+    projectForm();
+    // todoForm();
+    renderProjects();
+    // renderTodos(0);
 }
 
-render()
+render();

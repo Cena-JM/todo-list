@@ -1,11 +1,10 @@
 import { getData, setData } from './storage'
 
-const todoFactory = (title, description, dueDate, priority, check) => ({
+const todoFactory = (title, description, dueDate, priority) => ({
   title,
   description,
   dueDate,
-  priority,
-  check
+  priority
 });
 
 const addTodo = (todo, projectId) => {

@@ -1,13 +1,27 @@
 import { getprojectTodos } from "./todoFactory";
-import { createTodo } from "./createTodo";
 
-const renderTodo = (projectId) => {
+const renderTodos = (projectId) => {
     const todoContainer = document.querySelector("#projectTodos");
-    let todo;
-    for (todo of getprojectTodos(projectId)){
-        todoContainer.appendChild(createTodo(todo.title));
-    }
-    return todoContainer
+    let todos = getprojectTodos(projectId);
+    todos.forEach((todo, idx) => {
+        const todoItem = document.createElement("div");
+        todoItem.classList.add("todo-item");
+        todoItem.setAttribute('data-todo', idx);
+        const check = document.createElement('input');
+        check.setAttribute('type', 'checkbox');
+        const title = document.createElement('p');
+        title.classList.add('title');
+        title.innerHTML = `${todo.title}`;
+        const del = document.createElement('span');
+        del.innerHTML = '🗑';
+        const edit = document.createElement('span');
+        edit.innerHTML = 'Edit';
+        todoItem.appendChild(check);
+        todoItem.appendChild(title);
+        todoItem.appendChild(del);
+        todoItem.appendChild(edit);
+        todoContainer.appendChild(todoItem);
+    });
 }
 
-export { renderTodo }
+export { renderTodos }

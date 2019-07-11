@@ -1,13 +1,22 @@
 import { getData, setData } from "./storage";
+import { todoFactory } from "./todoFactory";
 
 const projectFactory = (title) => {
   let todos = [];
   return { title, todos }
 }
+const setDefaultProject = () => {
+  const defaultToDo = todoFactory('Sample task', 'Give feedback to developer',  '2019-12-01', 'Low');
+  const defaultProject = projectFactory('My Project', [defaultToDo]);
+  const projects = [defaultProject];
+  if (getData() === null) {
+    setData(projects);
+  }
+};
 
 const addProject = (title) => {
-  let project = projectFactory(title);
-  let projects = getData();
+  const project = projectFactory(title);
+  const projects = getData();
   projects.push(project);
   setData(projects);
 }
@@ -30,6 +39,7 @@ const getProjects = () => {
 }
 
 export { 
+  setDefaultProject,
   addProject,
   removeProject,
   getProject,
