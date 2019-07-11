@@ -1,6 +1,7 @@
 const createProject = (title) => {
-    const todoItem = document.createElement("div");
+    const projectItem = document.createElement("div");
     projectItem.classList.add("project-item");
+    projectItem.setAttribute("data-index", idx);
 
     projectItem.innerHTML = `
                             <p class="Title">

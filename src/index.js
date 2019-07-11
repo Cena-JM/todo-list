@@ -1,12 +1,17 @@
 import _ from "lodash";
 import "./styles/reset.css";
 import "./styles/style.css";
-import {  } from "./renderProject";
-import { addProject, removeProject, getProject } from './projectFactory';
+import { renderProjects } from "./renderProjects";
+import { renderTodo } from "./renderTodos";
 
+const project = document.getElementsByClassName("project-item")
 
-const project = (e) => document.getElementsById(`${e}`);
+const render = () => {
+    renderProjects()
 
-project(getProject.id).addEventListener("click", () => {
-    // 
-})
+    project.addEventListener("click", () => {
+        renderTodo(projectId)
+    })
+}
+
+render()
