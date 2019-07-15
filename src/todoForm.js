@@ -10,18 +10,18 @@ const todoForm = () => {
   const title = document.createElement('input');
   title.setAttribute('placeholder', 'Title');
   title.setAttribute('type', 'text');
-  title.classList.add('title', 'c1');
+  title.classList.add('title', 'c', 'c1');
 
   const description = document.createElement('textarea');
   description.setAttribute('placeholder', 'Description');
-  description.classList.add('description', 'c2');
+  description.classList.add('description', 'c', 'c2');
 
   const dueDate = document.createElement('input');
   dueDate.setAttribute('type', 'date');
-  dueDate.classList.add('due-date', 'c3');
+  dueDate.classList.add('due-date', 'c', 'c3');
 
   const priority = document.createElement('select');
-  priority.classList.add('priority', 'c4');
+  priority.classList.add('priority', 'c', 'c4');
 
   const opt1 = document.createElement('option');
   opt1.setAttribute('value', 'low');
@@ -42,7 +42,7 @@ const todoForm = () => {
   const submitButton = document.createElement('input');
   submitButton.setAttribute('type', 'submit');
   submitButton.setAttribute('id', 'submit');
-  submitButton.classList.add('submit-btn', 'c5')
+  submitButton.classList.add('submit-btn', 'c', 'c5')
 
   const projectId = document.createElement('input');
   projectId.setAttribute('type', 'hidden');
