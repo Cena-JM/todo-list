@@ -13,6 +13,7 @@ const projectForm = () => {
   projectTitle.setAttribute('placeholder', 'Create new project');
 
   const submit = document.createElement('input');
+  submit.classList.add('project-btn')
   submit.setAttribute('type', 'submit');
   submit.setAttribute('value', 'submit');
 
@@ -20,6 +21,10 @@ const projectForm = () => {
   form.appendChild(submit);
 
   formContainer.appendChild(form);
+  const projectsHead = document.createElement("h3");
+  projectsHead.classList.add("projects-head");
+  projectsHead.innerHTML = `Projects`;
+  formContainer.appendChild(projectsHead);
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
