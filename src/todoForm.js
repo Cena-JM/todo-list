@@ -21,16 +21,20 @@ const todoForm = () => {
   dueDate.classList.add('due-date');
 
   const priority = document.createElement('select');
-  priority.classList.add('priority')
+  priority.classList.add('priority');
+
   const opt1 = document.createElement('option');
   opt1.setAttribute('value', 'low');
   opt1.innerHTML = 'low';
+
   const opt2 = document.createElement('option');
   opt2.setAttribute('value', 'medium');
   opt2.innerHTML = 'Medium';
+
   const opt3 = document.createElement('option');
   opt3.setAttribute('value', 'high');
   opt3.innerHTML = 'high';
+
   priority.appendChild(opt1);
   priority.appendChild(opt2);
   priority.appendChild(opt3);
@@ -53,17 +57,18 @@ const todoForm = () => {
   form.appendChild(submitButton);
   formContainer.appendChild(form);
 
-  form.addEventListener("submit", () => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     const todo = todoFactory(
       title.value,
       description.value,
-      dueDate.valueAsDate,
+      dueDate.value,
       priority.value
     )
 
     const project = document.querySelector('#project-id');
-    addTodo(todo, project.id);
-    renderTodos(project.id);
+    addTodo(todo, parseInt(project.value));
+    renderTodos(parseInt(project.value));
   })
 }
 
