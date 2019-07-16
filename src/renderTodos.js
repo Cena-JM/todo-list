@@ -17,8 +17,15 @@ const renderTodos = (projectId) => {
         check.addEventListener('click', crossTodo);
 
         const title = document.createElement('p');
-        title.classList.add('title', 'crossed');
+        title.classList.add('title');
         title.innerHTML = `${todo.title}`;
+        if (todo.status === 'true') {
+            check.checked = false;
+            title.classList.remove('crossed');
+        }else {
+            check.checked = true;
+            title.classList.add('crossed');
+        }
 
         const del = document.createElement('span');
         del.innerHTML = '🗑';
@@ -55,6 +62,10 @@ const crossTodo = (e) => {
     let project = document.getElementById('project-id');
     let projectId = project.value;
     todoStatus(id, projectId);
+}
+
+const crossTodotitle = () => {
+    
 }
 
 export { renderTodos }
