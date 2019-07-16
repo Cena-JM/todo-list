@@ -11,6 +11,12 @@ const renderTodos = (projectId) => {
         todoItem.classList.add("todo-item");
         todoItem.setAttribute('data-todo', idx);
 
+        const todoHead = document.createElement("div");
+        todoHead.classList.add('todo-head');
+        const todoBody = document.createElement("div");
+        todoBody.classList.add('todo-body');
+        todoBody.classList.add('hidden');
+
         const title = document.createElement('p');
         title.classList.add('title');
         title.innerHTML = `${todo.title}`;
@@ -29,14 +35,42 @@ const renderTodos = (projectId) => {
         del.innerHTML = '🗑';
         del.addEventListener('click', deleteTodo);
 
-        const edit = document.createElement('span');
-        edit.innerHTML = 'Edit';
+        const more = document.createElement('span');
+        more.innerHTML = '<i class="fas fa-angle-down"></i>';
+
+        const desc = document.createElement('p');
+        desc.classList.add('todo-desc');
+        desc.innerHTML = `${todo.description}`;
+        todoBody.appendChild(desc);
+
+        const priority = document.createElement('span');
+        priority.classList.add('todo-priority');
+        priority.innerHTML = `${todo.priority}`;
+        todoBody.appendChild(priority);
+
+        const dueDate = document.createElement('span');
+        dueDate.classList.add('todo-date');
+        dueDate.innerHTML = `${todo.dueDate}`;
+        todoBody.appendChild(dueDate);
+
+        const edit = document.createElement('button');
+        edit.textContent = 'Edit';
+        edit.classList.add('edit-btn');
+        todoBody.appendChild(edit);
+
 
         // todoItem.appendChild(status);
-        todoItem.appendChild(check);
-        todoItem.appendChild(title);
-        todoItem.appendChild(del);
-        todoItem.appendChild(edit);
+        todoHead.appendChild(check);
+        todoHead.appendChild(title);
+        todoHead.appendChild(del);
+        todoHead.appendChild(more);
+
+        todoItem.appendChild(todoHead);
+        todoItem.appendChild(todoBody);
+
+        more.addEventListener('click', () => {
+            todoBody.classList.toggle('hidden');
+        });
 
         todoContainer.appendChild(todoItem);
     });
@@ -44,7 +78,7 @@ const renderTodos = (projectId) => {
 
 const deleteTodo = (e) => {
     let el = e.target;
-    let elParent = el.parentElement;
+    let elParent = el.parentElement.parentElement;
     let id = elParent.getAttribute('data-todo');
     let project = document.getElementById('project-id');
     let projectId = project.value;
@@ -55,7 +89,7 @@ const deleteTodo = (e) => {
 
 const crossTodo = (e) => {
     let el = e.target;
-    let elParent = el.parentElement;
+    let elParent = el.parentElement.parentElement;
     let id = elParent.getAttribute('data-todo');
     let project = document.getElementById('project-id');
     let projectId = project.value;
@@ -69,5 +103,7 @@ const crossTodotitle = (bool, el) => {
         el.classList.add('crossed')
     }
 }
+
+// bad
 
 export { renderTodos }
