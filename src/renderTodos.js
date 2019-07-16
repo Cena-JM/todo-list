@@ -1,4 +1,6 @@
 import { getprojectTodos, removeTodo, todoStatus } from "./todoFactory";
+import { setData } from "./storage";
+import { projects } from ".";
 
 const renderTodos = (projectId) => {
     const todoContainer = document.querySelector("#project-todos");
@@ -18,6 +20,7 @@ const renderTodos = (projectId) => {
         todoBody.classList.add('hidden');
 
         const title = document.createElement('p');
+        title.setAttribute('contenteditable', "true");
         title.classList.add('title');
         title.innerHTML = `${todo.title}`;
         crossTodotitle(todo.status, title)
@@ -39,6 +42,7 @@ const renderTodos = (projectId) => {
         more.innerHTML = '<i class="fas fa-angle-down"></i>';
 
         const desc = document.createElement('p');
+        desc.setAttribute('contenteditable', "true");
         desc.classList.add('todo-desc');
         desc.innerHTML = `${todo.description}`;
         todoBody.appendChild(desc);
@@ -49,6 +53,7 @@ const renderTodos = (projectId) => {
         todoBody.appendChild(priority);
 
         const dueDate = document.createElement('span');
+        dueDate.setAttribute('contenteditable', "true");
         dueDate.classList.add('todo-date');
         dueDate.innerHTML = `${todo.dueDate}`;
         todoBody.appendChild(dueDate);
@@ -71,6 +76,14 @@ const renderTodos = (projectId) => {
         more.addEventListener('click', () => {
             todoBody.classList.toggle('hidden');
         });
+
+
+        edit.addEventListener('click', () => {
+            todo.title = title.innerHTML;
+            todo.description = desc.innerHTML;
+            todo.dueDate = dueDate.innerHTML;
+            setData(projects);
+        })
 
         todoContainer.appendChild(todoItem);
     });
@@ -104,6 +117,5 @@ const crossTodotitle = (bool, el) => {
     }
 }
 
-// bad
 
 export { renderTodos }
