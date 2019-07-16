@@ -133,12 +133,25 @@ header h2{
   border-bottom: 1px #01747a solid;
 }
 
-#project-title{
+.project-title{
   padding: 15px;
-  width: 75%;
+  width: 68%;
   background: #00595e;
   border: none;
   color: #a5a5a5;
+}
+
+.project-btn {
+  background: #00595e;
+  border: none;
+  border-left: 1px #01747a solid;
+  padding: 6px 12px;
+  font-weight: 700;
+  color: #a5a5a5;
+  width: 24%;
+}
+.project-btn:hover {
+  color: #f96d15;
 }
 
 .projects-head {
@@ -162,16 +175,6 @@ header h2{
   background: #074c50;
 }
 
-.project-btn {
-  background: #00595e;
-  border: none;
-  border-left: 1px #01747a solid;
-  padding: 6px 12px;
-  font-weight: 700;
-  color: #a5a5a5;
+.hidden {
+  display: none;
 }
-.project-btn:hover {
-  color: #f96d15;
-}
-
-

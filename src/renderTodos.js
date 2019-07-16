@@ -1,4 +1,4 @@
-import { getprojectTodos, removeTodo } from "./todoFactory";
+import { getprojectTodos, removeTodo, todoStatus } from "./todoFactory";
 
 const renderTodos = (projectId) => {
     const todoContainer = document.querySelector("#project-todos");
@@ -11,11 +11,13 @@ const renderTodos = (projectId) => {
         todoItem.classList.add("todo-item");
         todoItem.setAttribute('data-todo', idx);
 
+
         const check = document.createElement('input');
         check.setAttribute('type', 'checkbox');
+        check.addEventListener('click', crossTodo);
 
         const title = document.createElement('p');
-        title.classList.add('title');
+        title.classList.add('title', 'crossed');
         title.innerHTML = `${todo.title}`;
 
         const del = document.createElement('span');
@@ -25,6 +27,7 @@ const renderTodos = (projectId) => {
         const edit = document.createElement('span');
         edit.innerHTML = 'Edit';
 
+        // todoItem.appendChild(status);
         todoItem.appendChild(check);
         todoItem.appendChild(title);
         todoItem.appendChild(del);
@@ -43,6 +46,15 @@ const deleteTodo = (e) => {
     let parent = document.getElementById('project-todos');
     parent.removeChild(elParent);
     removeTodo(id, projectId);
+}
+
+const crossTodo = (e) => {
+    let el = e.target;
+    let elParent = el.parentElement;
+    let id = elParent.getAttribute('data-todo');
+    let project = document.getElementById('project-id');
+    let projectId = project.value;
+    todoStatus(id, projectId);
 }
 
 export { renderTodos }

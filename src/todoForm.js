@@ -1,11 +1,17 @@
 import { todoFactory, addTodo } from "./todoFactory";
 import { renderTodos } from "./renderTodos";
+import { isBoolean } from "util";
 
 const todoForm = () => {
   const formContainer = document.querySelector('#new-todo')
 
   const form = document.createElement('form');
   form.setAttribute('id', 'new-todo-form');
+
+  const status = document.createElement('input');
+  status.setAttribute('type', 'text');
+  status.setAttribute('value', 'true');
+  status.classList.add('hidden');
 
   const title = document.createElement('input');
   title.setAttribute('placeholder', 'Title');
@@ -50,6 +56,7 @@ const todoForm = () => {
 
 
 
+  form.appendChild(status);
   form.appendChild(title);
   form.appendChild(description);
   form.appendChild(dueDate);
@@ -61,6 +68,7 @@ const todoForm = () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const todo = todoFactory(
+      status.value,
       title.value,
       description.value,
       dueDate.value,

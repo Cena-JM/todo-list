@@ -11,6 +11,8 @@ const projectForm = () => {
   projectTitle.setAttribute('type', 'text');
   projectTitle.setAttribute('id', 'project-title');
   projectTitle.setAttribute('placeholder', 'Create new project');
+  projectTitle.classList.add('project-title');
+
 
   const submit = document.createElement('input');
   submit.classList.add('project-btn')

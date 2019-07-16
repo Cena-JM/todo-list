@@ -2,7 +2,8 @@ import { setData } from './storage'
 import { projects } from './index'
 import { getProject } from './projectFactory';
 
-const todoFactory = (title, description, dueDate, priority) => ({
+const todoFactory = (status, title, description, dueDate, priority) => ({
+  status,
   title,
   description,
   dueDate,
@@ -21,10 +22,21 @@ const removeTodo = (todoId, projectId) => {
   setData(projects);
 }
 
+const todoStatus = (todoId, projectId) => {
+  let todos = projects[projectId].todos;
+  let curTodo = todos[todoId];
+  if (curTodo['status'] === 'true'){
+    curTodo['status'] = 'false';
+  }else {
+    curTodo['status'] = 'true';
+  }
+  setData(projects);
+}
+
 const getprojectTodos = (projectId) => {
   let todos = projects[projectId].todos;
   return todos;
 }
 
-export { todoFactory, addTodo, removeTodo, getprojectTodos }
+export { todoFactory, addTodo, removeTodo, todoStatus, getprojectTodos }
 
