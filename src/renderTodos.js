@@ -11,21 +11,19 @@ const renderTodos = (projectId) => {
         todoItem.classList.add("todo-item");
         todoItem.setAttribute('data-todo', idx);
 
-
-        const check = document.createElement('input');
-        check.setAttribute('type', 'checkbox');
-        check.addEventListener('click', crossTodo);
-
         const title = document.createElement('p');
         title.classList.add('title');
         title.innerHTML = `${todo.title}`;
-        if (todo.status === 'true') {
-            check.checked = false;
-            title.classList.remove('crossed');
-        }else {
-            check.checked = true;
-            title.classList.add('crossed');
-        }
+        crossTodotitle(todo.status, title)
+
+        const check = document.createElement('input');
+        check.setAttribute('type', 'checkbox');
+        check.addEventListener('click', (e) => {
+            crossTodo(e);
+            crossTodotitle(todo.status, title);
+        });
+        (todo.status === 'true')? check.checked = false : check.checked = true;
+
 
         const del = document.createElement('span');
         del.innerHTML = '🗑';
@@ -64,8 +62,12 @@ const crossTodo = (e) => {
     todoStatus(id, projectId);
 }
 
-const crossTodotitle = () => {
-    
+const crossTodotitle = (bool, el) => {
+    if(bool === 'true'){
+        el.classList.remove('crossed')
+    }else{
+        el.classList.add('crossed')
+    }
 }
 
 export { renderTodos }
