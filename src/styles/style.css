@@ -230,6 +230,6 @@ header h2{
 
 /* priorities */
 
-.low { background: #008800; }
-.medium { background: #f96d15; }
-.high { background: #880000; }
+.low { border-left: 3px solid #00aa00; }
+.medium { border-left: 3px solid #f98e15; }
+.high { border-left: 3px solid #bb0000; }

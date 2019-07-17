@@ -51,7 +51,7 @@ const renderTodos = (projectId) => {
         priority.classList.add('todo-priority');
         priority.innerHTML = `${todo.priority}`;
         todoBody.appendChild(priority);
-        (todo.priority === 'low')? check.classList.add('low') : (todo.priority === 'medium')? check.classList.add('medium') : check.classList.add('high');
+        (todo.priority === 'high')? todoItem.classList.add('high') : (todo.priority === 'medium')? todoItem.classList.add('medium') : todoItem.classList.add('low');
 
         const desc = document.createElement('p');
         desc.setAttribute('contenteditable', "true");
