@@ -18,7 +18,7 @@ const renderProjects = () => {
         projectItem.setAttribute("data-index", idx);
 
         const title = document.createElement('p');
-        title.classList.add('title');
+        title.classList.add('project-name');
         title.innerHTML = `${project.title}`;
 
         const remove = document.createElement('div');

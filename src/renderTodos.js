@@ -41,25 +41,26 @@ const renderTodos = (projectId) => {
         const more = document.createElement('span');
         more.innerHTML = '<i class="fas fa-angle-down"></i>';
 
-        const desc = document.createElement('p');
-        desc.setAttribute('contenteditable', "true");
-        desc.classList.add('todo-desc');
-        desc.innerHTML = `${todo.description}`;
-        todoBody.appendChild(desc);
-
-        const priority = document.createElement('span');
-        priority.classList.add('todo-priority');
-        priority.innerHTML = `${todo.priority}`;
-        todoBody.appendChild(priority);
-
         const dueDate = document.createElement('span');
         dueDate.setAttribute('contenteditable', "true");
         dueDate.classList.add('todo-date');
         dueDate.innerHTML = `${todo.dueDate}`;
         todoBody.appendChild(dueDate);
 
+        const priority = document.createElement('span');
+        priority.classList.add('todo-priority');
+        priority.innerHTML = `${todo.priority}`;
+        todoBody.appendChild(priority);
+        (todo.priority === 'low')? check.classList.add('low') : (todo.priority === 'medium')? check.classList.add('medium') : check.classList.add('high');
+
+        const desc = document.createElement('p');
+        desc.setAttribute('contenteditable', "true");
+        desc.classList.add('todo-desc');
+        desc.innerHTML = `${todo.description}`;
+        todoBody.appendChild(desc);
+
         const edit = document.createElement('button');
-        edit.textContent = 'Edit';
+        edit.innerHTML = `<i class="fas fa-edit"></i>`;
         edit.classList.add('edit-btn');
         todoBody.appendChild(edit);
 
