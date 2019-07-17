@@ -79,17 +79,62 @@ body {
 
 .todo-item{
   display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(0, 122, 126, 0.4);
+  padding: 5px 0;
+}
+
+.todo-head{
+  display: flex;
   justify-content: space-between;
   align-items: center;
   width: auto;
   padding: 0 20px;
   height: 50px;
-  border-bottom: 1px solid rgba(0, 122, 126, 0.4);
   margin: 0 10px 0 10px;
 }
-.todo-item p {
+
+.todo-body {
+  background: #00595e;
+  padding: 20px 32px;
+  color: #a5a5a5;
+}
+
+.title {
   width: 300px;
 }
+
+.todo-date {
+  float: left;
+  font-size: 1em;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+.todo-priority {
+  float: right;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.todo-desc {
+  clear: left;
+  text-align: left;
+  border-bottom: 1px #01747a solid;
+  margin-bottom: 20px;
+}
+
+.edit-btn {
+  clear: both;
+  border: none;
+  background: none;
+  font-size: 1.4em;
+  box-shadow: 1px 1px 3px;
+  border-radius: 50%;
+}
+
+.fas { color: #a5a5a5; padding: 4px; }
 
 .c { height: 20px; background: none; border: none; border-left: 1px solid #cecece; padding: 0 0 0 15px; }
 .c1 { width: 25%; border: none; }
@@ -182,3 +227,9 @@ header h2{
 .crossed {
   text-decoration: line-through;
 }
+
+/* priorities */
+
+.low { border-left: 3px solid #00aa00; }
+.medium { border-left: 3px solid #f98e15; }
+.high { border-left: 3px solid #bb0000; }

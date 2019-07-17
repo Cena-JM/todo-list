@@ -14,9 +14,9 @@ let projects;
 if (getData()) {
     projects = getData();
   } else {
-    // else create a default starting list:
     const defaultToDo = todoFactory(true, 'Sample task', 'Give feedback to developer',  '2019-12-01', 'Low');
-    const defaultProject = projectFactory('My Project', [defaultToDo]);
+    const defaultProject = projectFactory('My Project');
+    defaultProject.todos.push(defaultToDo);
     projects = [defaultProject];
     setData(projects);
   }
